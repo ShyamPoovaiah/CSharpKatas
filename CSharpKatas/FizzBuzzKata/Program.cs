@@ -14,7 +14,7 @@ namespace FizzBuzzKata
             Console.ReadKey();
         }
 
-        private static string FizzBuzz(int start, int end) //unit testable/functional style
+        private static string FizzBuzz(int start, int end) //unit testable, functional style of programming.
         {
             return Enumerable
                 .Range(start, end)
