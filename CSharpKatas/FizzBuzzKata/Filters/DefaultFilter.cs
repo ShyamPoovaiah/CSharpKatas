@@ -1,6 +1,6 @@
 ﻿using FizzBuzzKata.Interfaces;
 
-namespace FizzBuzzKata
+namespace FizzBuzzKata.Filters
 {
     internal class DefaultFilter : IFilter
     {

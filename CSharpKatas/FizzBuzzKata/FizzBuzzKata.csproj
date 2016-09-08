@@ -43,11 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultFilter.cs" />
-    <Compile Include="DivisibleByFiveOrHasFiveFilter.cs" />
-    <Compile Include="DivisibleByThreeAndFiveFilter.cs" />
-    <Compile Include="DivisibleByThreeFilter.cs" />
-    <Compile Include="DivisibleByThreeOrHasThreeFilter.cs" />
+    <Compile Include="Filters\DefaultFilter.cs" />
+    <Compile Include="Filters\DivisibleByFiveOrHasFiveFilter.cs" />
+    <Compile Include="Filters\DivisibleByThreeAndFiveFilter.cs" />
+    <Compile Include="Filters\DivisibleByThreeFilter.cs" />
+    <Compile Include="Filters\DivisibleByThreeOrHasThreeFilter.cs" />
     <Compile Include="Filters\DivisibleByFiveFilter.cs" />
     <Compile Include="Interfaces\IFilter.cs" />
     <Compile Include="Program.cs" />

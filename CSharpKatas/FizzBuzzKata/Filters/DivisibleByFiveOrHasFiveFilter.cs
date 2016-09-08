@@ -1,7 +1,7 @@
 ﻿using System;
 using FizzBuzzKata.Interfaces;
 
-namespace FizzBuzzKata
+namespace FizzBuzzKata.Filters
 {
     internal class DivisibleByFiveOrHasFiveFilter : IFilter
     {
