@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FizzBuzzKata.Filters;
+using FizzBuzzKata.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +16,18 @@ namespace FizzBuzzKata
     */
     class Program
     {
+        static IEnumerable<IFilter> filters;
+
         static void Main(string[] args)
         {
-            Console.WriteLine(FizzBuzz(1, 100));
+            filters = new List<IFilter>() { // Use dependency injection.
+                (IFilter)new DivisibleByThreeAndFiveFilter() ,
+                (IFilter)new DivisibleByFiveFilter(),
+                (IFilter)new DivisibleByThreeFilter(),
+                (IFilter)new DefaultFilter()
+            };
+
+            Console.WriteLine(FizzBuzz(1, 100));          
             Console.ReadKey();
         }
 
@@ -28,12 +39,22 @@ namespace FizzBuzzKata
                 .Aggregate((result, current) => result + Environment.NewLine + current);
         }
 
-        private static string FizzBuzzOne(int number)
+        /* 
+        private static string FizzBuzzOne(int number) // Violates Open-Close principle
         {
             if (number % 3 == 0 && number % 5 == 0) return "FizzBuzz"; //Use of 3 and 5 instead of 15 since they are part of domain language (Problem statement).
             else if (number % 3 == 0) return "Fizz";
             else if (number % 5 == 0) return "Buzz";
             else return number.ToString();
+        }
+        */
+
+        private static string FizzBuzzOne(int number) //A new filter can be added by changing the configuration
+        {
+           return filters
+                .Where(f => f.isValid(number))
+                .First()
+                .GetValue();                
         }
     }
 }
