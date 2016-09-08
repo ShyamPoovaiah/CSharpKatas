@@ -9,10 +9,16 @@ using System.Threading.Tasks;
 namespace FizzBuzzKata
 {
     /* Problem statement:
+     * http://codingdojo.org/cgi-bin/index.pl?KataFizzBuzz
+     * Stage 1
      * For a range of numbers from 1 to 100
      * Print 'Fizz' if the number is divisible by 3
      * Print 'Buzz' if the number is divisible by 5
      * Print 'FizzBuzz' if the number is divisible by both 3 and 5.
+     * -----------------------------------------------------------
+     * Stage 2 - New Requirement
+     * Print 'Fizz' if the number is divisible by 3 or has a 3 in it.
+     * Print 'Buzz' if the number is divisible by 5 or has a 5 in it.
     */
     class Program
     {
@@ -20,10 +26,18 @@ namespace FizzBuzzKata
 
         static void Main(string[] args)
         {
-            filters = new List<IFilter>() { // Use dependency injection.
+            /*
+            filters = new List<IFilter>() { // Use dependency injection. //stage - 1
                 (IFilter)new DivisibleByThreeAndFiveFilter() ,
                 (IFilter)new DivisibleByFiveFilter(),
                 (IFilter)new DivisibleByThreeFilter(),
+                (IFilter)new DefaultFilter()
+            };
+            */
+
+            filters = new List<IFilter>() { // Use dependency injection. //stage - 2
+                (IFilter)new DivisibleByThreeOrHasThreeFilter(),
+                (IFilter)new DivisibleByFiveOrHasFiveFilter(),                
                 (IFilter)new DefaultFilter()
             };
 
